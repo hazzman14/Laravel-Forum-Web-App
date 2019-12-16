@@ -13,8 +13,20 @@
                             {{ session('status') }}
                         </div>
                     @endif
+                    <a href="/posts/create" class="btn btn-primary"> Create Post</a>
+                    <h1> Your Posts </h1>
+                    @foreach ($posts as $post)
+                         <h2>{{$post->title}}</h2>
+                        <form method="POST"
+        action="{{route('posts.destroy',['id' => $post->id])}}">
 
-                    You are logged in!
+        @csrf 
+        @method('DELETE')
+        <button type="submit">Delete</button>
+</form>
+                    @endforeach
+                   
+
                 </div>
             </div>
         </div>

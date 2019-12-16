@@ -37,14 +37,14 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'user_id' => 'required|integer',
+            
             'title' => 'required|max:255',
             'body' => 'required|max:255',
             
         ]);
 
         $a = new Post;
-        $a->user_id = $validatedData['user_id'];
+        $a->user_id = auth()->user()->id;
         $a->title = $validatedData['title'];
         $a->body = $validatedData['body'];
         $a->save();
@@ -73,7 +73,7 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        //
+       //
     }
 
     /**
