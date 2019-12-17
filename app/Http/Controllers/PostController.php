@@ -96,7 +96,21 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validatedData = $request->validate([
+            
+            'title' => 'required|max:255',
+            'body' => 'required|max:255',
+            
+        ]);
+
+        $post = Post::findOrFail($id);
+        $post->user_id = auth()->user()->id;
+        $post->title = $validatedData['title'];
+        $post->body = $validatedData['body'];
+        $post->save();
+
+        session()->flash('message', 'Post was edited.');
+        return redirect()->route('posts.index');
     }
 
     /**

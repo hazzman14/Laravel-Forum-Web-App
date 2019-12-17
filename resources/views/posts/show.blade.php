@@ -20,9 +20,10 @@
                                         @csrf 
                                         @method('DELETE')
                                         <input type="submit" value="Delete" class="btn btn-danger">
+                                        <a href="/posts/{{$post->id}}/edit" class="btn btn-secondary"> Edit</a>
                                 </form>
 <hr>
-                        <a href="/posts/{{$post->id}}/edit" class="btn btn-secondary"> Edit</a>
+                        
 
                                 <hr>
                                

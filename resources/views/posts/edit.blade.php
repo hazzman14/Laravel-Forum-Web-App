@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
-@section('title', 'Create Post')
+@section('title', 'Edit Post')
 
 @section('content')
 <h1> Edit Post </h1>
-<form method="POST" action="{{route('posts.store')}}">
+<form method="POST" action="{{route('posts.update',['id' => $post->id])}}">
 @csrf
 <ul class="list-group">
     <li class="list-group-item"> <h1> Title: <input type="text" name="title" 

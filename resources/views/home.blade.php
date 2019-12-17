@@ -24,7 +24,8 @@
 
         @csrf 
         @method('DELETE')
-        <button type="submit">Delete</button>
+        <input type="submit" value="Delete" class="btn btn-danger">
+        <a href="/posts/{{$post->id}}/edit" class="btn btn-secondary"> Edit</a>
 </form>
                     @endforeach
 </ul>
