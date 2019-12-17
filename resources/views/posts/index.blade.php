@@ -3,14 +3,18 @@
 @section('title', 'Posts')
 
 @section('content')
-<p> Post list: </p>
+    <h1>Posts</h1>
 
-<ul>
-    @foreach ($posts as $post)
-        <li><a href="{{route('posts.show', ['id' => $post->id]) }}"> {{$post->title}} </a></li>
-    @endforeach
-</ul>
+    <ul class="list-group">
+        @foreach ($posts as $post)
+        <div class="card card-body bg-light">
+            <h2><li class="list-group-item"><a href="{{route('posts.show', ['id' => $post->id]) }}"> {{$post->title}} </a></h2>
+            <small>Posted on {{$post->created_at}} By: {{$post->user->name}}</small>
+                 </li>
+                </div>
+        @endforeach
+    </ul>
 
-{{$posts->links()}}
-<a href="{{ route('posts.create')}}">Create Post </a>
+    {{$posts->links()}}
+    
 @endsection

@@ -8,13 +8,23 @@ use Illuminate\Http\Request;
 class PostController extends Controller
 {
     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth', ['except' => ['index','show']]);
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $posts = Post::paginate(20);
+        $posts = Post::orderBy('created_at','desc')->paginate(5);
         return view('posts.index', ['posts' => $posts]);
     }
 
@@ -73,7 +83,8 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-       //
+        $post = Post::findOrFail($id);
+        return view('posts.edit', ['post' => $post]);
     }
 
     /**
