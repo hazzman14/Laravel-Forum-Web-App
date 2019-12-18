@@ -5,10 +5,9 @@
 @section('content')
         <a href="/posts" class="btn btn-secondary"> Back</a>
         <ul class="list-group">
-                <li class="list-group-item"> <h1> Title: {{ $post->title }} </h1> </li>
-                <li class="list-group-item"> <h2> Body: {{ $post->body }} </h2> </li>  
-                <li class="list-group-item"> Post ID: {{ $post->id }} </li>
-                
+                <img style="width:100%" src="/storage/cover_images/{{$post->cover_image}}">
+                <li class="list-group-item"> <h1>{{ $post->title }} </h1> </li>
+                <li class="list-group-item"> <h2>{{ $post->body }} </h2> </li>  
                 <li class="list-group-item"> Created on: {{ $post->created_at }} By: {{$post->user->name}} </li>
                 
         </ul>

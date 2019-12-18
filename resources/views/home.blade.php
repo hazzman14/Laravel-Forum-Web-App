@@ -18,7 +18,7 @@
                     <h1> Your Posts: </h1>
                     <ul class="list-group">
                     @foreach ($posts as $post)
-                    <li class="list-group-item"> <h2>{{$post->title}}</h2> </li>
+                    <li class="list-group-item"><a href="{{route('posts.show', ['id' => $post->id]) }}"> <h2>{{$post->title}}</h2> </li>
                         <form method="POST"
         action="{{route('posts.destroy',['id' => $post->id])}}">
 
