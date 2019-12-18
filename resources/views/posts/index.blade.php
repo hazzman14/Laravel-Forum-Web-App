@@ -22,6 +22,8 @@
         @endforeach
     </ul>
 
+    
+
     {{$posts->links()}}
     @else 
         <p> No Posts Found </p>

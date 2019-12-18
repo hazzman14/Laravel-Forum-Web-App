@@ -14,6 +14,15 @@
 Route::get('users', 'UserController@index')->name('users.index'); 
 Route::get('users/{id}', 'UserController@show')->name('users.show'); 
 
+//wip for comments
+Route::get('comments', 'CommentController@index')->name('comments.index'); 
+Route::get('comments/create', 'CommentController@create')->name('comments.create');
+Route::get('comments/{id}/edit', 'CommentController@edit')->name('comments.edit');
+Route::post('/posts/{id}/comments', 'CommentController@update')->name('comments.update');
+Route::post('/posts/{id}/comments', 'CommentController@store')->name('comments.store');
+Route::get('comments/{id}', 'CommentController@show')->name('comments.show');
+Route::delete('comments/{id}', 'CommentController@destroy')->name('comments.destroy');
+
 Route::get('posts', 'PostController@index')->name('posts.index');
 Route::get('posts/create', 'PostController@create')->name('posts.create');
 //testing
