@@ -4,7 +4,7 @@
 
 @section('content')
     <h1>Posts</h1>
-
+    @if(count($posts)>0)
     <ul class="list-group">
         @foreach ($posts as $post)
         <div class="well">
@@ -18,9 +18,12 @@
                 </div>
                 </div>
             </div>
+            <br>
         @endforeach
     </ul>
 
     {{$posts->links()}}
-    
+    @else 
+        <p> No Posts Found </p>
+    @endif
 @endsection

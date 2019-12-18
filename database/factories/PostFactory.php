@@ -10,6 +10,7 @@ $factory->define(Post::class, function (Faker $faker) {
         'title' => $faker->word(),
         'body' => $faker->sentence(),
         'user_id'=>App\User::inRandomOrder()->first()->id,
+        'cover_image'=>'noimage.jpg',
         
     ];
 });
