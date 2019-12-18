@@ -20,7 +20,7 @@
 
 
 <input type="submit" value="Submit" class="btn btn-primary">
-<a href="{{route('posts.index')}}" class="btn btn-secondary">Cancel</a>
+<a href="{{route('home')}}" class="btn btn-secondary">Cancel</a>
 </form>
 
 @endsection

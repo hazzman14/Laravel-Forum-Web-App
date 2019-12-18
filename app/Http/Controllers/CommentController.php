@@ -8,6 +8,16 @@ use Illuminate\Http\Request;
 class CommentController extends Controller
 {
     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth', ['except' => ['index','show']]);
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -97,6 +107,9 @@ class CommentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $comments = Comment::findOrFail($id);
+        $comments->delete();
+
+        return back();
     }
 }

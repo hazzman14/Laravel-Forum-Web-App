@@ -29,11 +29,25 @@
 </form>
                     @endforeach
 </ul>
-                   
 
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+<br>
+<h1> Your Comments: </h1>
+@foreach ($comments as $comment)
+                    <li class="list-group-item"><a href="{{route('posts.show', ['id' => $comment->post->id]) }}"> <h2>{{$comment->comment}}</h2> </li>
+
+                        <form method="POST"
+                        action="{{route('comments.destroy',['id' => $comment->id])}}">
+                
+                        @csrf 
+                        @method('DELETE')
+                        <input type="submit" value="Delete" class="btn btn-danger">
+                </form>
+
+
+                    @endforeach
+
+
+                    
+
+
 @endsection

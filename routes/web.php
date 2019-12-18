@@ -11,8 +11,8 @@
 |
 */
 
-Route::get('users', 'UserController@index')->name('users.index'); 
-Route::get('users/{id}', 'UserController@show')->name('users.show'); 
+//Route::get('users', 'UserController@index')->name('users.index'); 
+//Route::get('users/{id}', 'UserController@show')->name('users.show'); 
 
 //wip for comments
 Route::get('comments', 'CommentController@index')->name('comments.index'); 

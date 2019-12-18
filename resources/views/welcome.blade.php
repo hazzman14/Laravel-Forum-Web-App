@@ -81,12 +81,11 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Coursework
+                    My Blog
                 </div>
 
                 <div class="links">
-                    <a href="/posts">Posts</a>
-                    <a href="/users">Users</a>
+                    <a href="/posts"><h2>Posts</h2></a>
                 </div>
             </div>
         </div>

@@ -7,8 +7,8 @@
         <ul class="list-group">
                 <img style="width:100%" src="/storage/cover_images/{{$post->cover_image}}">
                 <li class="list-group-item"> <h1>{{ $post->title }} </h1> </li>
-                <li class="list-group-item"> <h2>{{ $post->body }} </h2> </li>  
-                <li class="list-group-item"> Created on: {{ $post->created_at }} By: {{$post->user->name}} </li>
+                <li class="list-group-item"> <h1>{{ $post->body }} </h1> </li>  
+                <li class="list-group-item"> Created on: {{ $post->created_at }} By: {{ $post->user->name}} </li>
                
                 @if(!Auth::guest())
                 @if(Auth::user()->id == $post->user_id)
@@ -26,7 +26,7 @@
                        
                 @endif
         @endif
-        
+
                 @if(Auth::guest())
                         <h1> Login or make an accout to comment! </h1>
                 @endif
@@ -55,7 +55,21 @@
 <h1>Comments:</h1>
 @foreach($post->comments as $comment)
 <li class="list-group-item"> <h2>{{ $comment->comment}} </h2> </li> 
-<li class="list-group-item"> <h4>Written on: {{ $comment->created_at }} By{{ $comment->user_id}} </h4> </li>   
+<li class="list-group-item"> <small> Written on: {{ $comment->created_at }} By {{ $comment->user->name}}   </small>
+@if(!Auth::guest())
+@if(Auth::user()->id == $post->user_id or Auth::user()->id == $comment->user_id )
+        <form method="POST"
+                action="{{route('comments.destroy',['id' => $comment->id])}}">
+                @csrf 
+                @method('DELETE')
+                <input type="submit" value="Delete" class="btn btn-danger">
+                
+        </form>
+        </li> 
+<br>
+       
+@endif
+@endif
 @endforeach
 </ul>
 <hr>
