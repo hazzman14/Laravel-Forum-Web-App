@@ -41,6 +41,7 @@
                         @csrf 
                         @method('DELETE')
                         <input type="submit" value="Delete" class="btn btn-danger">
+                        <a href="/comments/{{$comment->id}}/edit" class="btn btn-secondary"> Edit</a>
                 </form>
 
 

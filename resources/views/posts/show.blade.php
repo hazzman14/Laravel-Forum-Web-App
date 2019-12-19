@@ -63,7 +63,9 @@
                 @csrf 
                 @method('DELETE')
                 <input type="submit" value="Delete" class="btn btn-danger">
-                
+                @if(Auth::user()->id == $comment->user_id)
+                <a href="/comments/{{$comment->id}}/edit" class="btn btn-secondary"> Edit</a>
+                @endif
         </form>
         </li> 
 <br>

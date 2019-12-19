@@ -84,7 +84,14 @@ class CommentController extends Controller
      */
     public function edit($id)
     {
-        //
+        $comment = Comment::findOrFail($id);
+        //check for user
+        if(auth()->user()->id !== $comment->user_id){
+            session()->flash('error', 'Unauthorized');
+            return redirect('/posts');
+           
+        }
+        return view('comments.edit', ['comment' => $comment]);
     }
 
     /**
@@ -96,7 +103,22 @@ class CommentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validatedData = $request->validate([
+            
+            'comment' => 'required|max:255',
+            
+        ]);
+
+        $comment = Comment::findOrFail($id);
+       
+        $comment->comment = $validatedData['comment'];
+        $comment->save();
+
+        session()->flash('message', 'Comment was edited.');
+        return redirect()->route('posts.index');
+
+
+
     }
 
     /**

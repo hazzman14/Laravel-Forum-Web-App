@@ -18,7 +18,7 @@
 Route::get('comments', 'CommentController@index')->name('comments.index'); 
 Route::get('comments/create', 'CommentController@create')->name('comments.create');
 Route::get('comments/{id}/edit', 'CommentController@edit')->name('comments.edit');
-Route::post('/posts/{id}/comments', 'CommentController@update')->name('comments.update');
+Route::post('/comments/{id}', 'CommentController@update')->name('comments.update');
 Route::post('/posts/{id}/comments', 'CommentController@store')->name('comments.store');
 Route::get('comments/{id}', 'CommentController@show')->name('comments.show');
 Route::delete('comments/{id}', 'CommentController@destroy')->name('comments.destroy');
